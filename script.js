@@ -2,18 +2,22 @@ var board = ["", "", "", "", "", "", "", "", ""];
 var player = "X";
 var result = document.getElementById("result");
 
+
 function playerMove(box) {
 	if (board[box - 1] == "") {
+        
 		board[box - 1] = player;
 		document.getElementById(box).innerHTML = player;
-
+        
 		if (player == "X") {
+			checkWinner();
 			player = "O";
 		} else {
+			checkWinner();
 			player = "X";
 		}
-
-		checkWinner();
+        
+		
 	}
 }
 
@@ -32,7 +36,7 @@ function checkWinner() {
 			result.innerHTML = "It's a tie!";
 			disableClick();
 		}
-}
+	}  
 
 function disableClick() {
 	for (var i = 1; i <= 9; i++) {
